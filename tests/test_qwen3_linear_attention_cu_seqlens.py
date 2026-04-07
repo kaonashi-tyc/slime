@@ -228,7 +228,7 @@ def test_qwen35_linear_attention_builds_cp_context(monkeypatch):
     assert torch.equal(cp_context_calls["cu_seqlens"], torch.tensor([0, 32], dtype=torch.int32))
     assert cp_context_calls["group"] == "fake-cp-group"
     assert cp_context_calls["conv1d_kernel_size"] == 4
-    assert cp_context_calls["conv_weight_shape"] == (32, 4)
+    assert cp_context_calls["conv_weight_shape"] == (64, 4)
     assert cp_context_calls["conv_cp_context"] is cp_context_calls["gdn_cp_context"]
     assert torch.equal(cp_context_calls["gdn_cu_seqlens"], torch.tensor([0, 32], dtype=torch.int32))
 
